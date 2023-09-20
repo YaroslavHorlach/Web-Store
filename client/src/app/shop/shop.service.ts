@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IProduct } from '../shared/models/product';
 import { IPagination } from '../shared/models/pagination';
 import { IBrand } from '../shared/models/brand';
 import { IType } from '../shared/models/productType';
@@ -39,6 +40,10 @@ export class ShopService {
                     return response.body;
                 })
             );
+    }
+
+    getProduct(id: number) {
+        return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
     }
 
     getBrands() {
